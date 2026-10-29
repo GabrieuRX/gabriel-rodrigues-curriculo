@@ -1,0 +1,54 @@
+@import './base.css';
+
+:root {
+  --amarelo: #F0D62E;
+  --preto: #000;
+  --cinza: #808080;
+  --cinza-claro: #BFBFBF;
+  --linha: #DFDFDF;
+  --sans: "IBM Plex Sans", sans-serif;
+  --mono: "IBM Plex Mono", monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 2;
+  color: var(--preto);
+  background: #fff;
+}
+
+.pagina {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 88px 48px 96px;
+}
+
+/* Grid de 12 colunas: conteúdo principal + lateral */
+.grade {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: 32px;
+}
+.principal { grid-column: 1 / 9; }
+.lateral   { grid-column: 9 / 13; padding-left: 32px; }
+
+section { margin-bottom: 48px; }
+
+/* Título de cada seção (usado em mais de um componente) */
+.rotulo {
+  font: 400 12px/1 var(--mono);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--cinza-claro);
+  margin-bottom: 24px;
+}
+
+/* Celular e tablet: uma coluna só */
+@media (max-width: 900px) {
+  .pagina { padding: 40px 24px 64px; }
+  .principal { grid-column: 1 / -1; }
+  .lateral { grid-column: 1 / -1; padding-left: 0; }
+}
